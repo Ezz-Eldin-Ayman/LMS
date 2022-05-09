@@ -49,10 +49,10 @@ class Api{
       isLogin=true;
       LoginScreen(isLogin: true,);
       Fluttertoast.showToast(
-          msg: "Login Successfully",
-          toastLength: Toast.LENGTH_LONG,
+          msg: "Successfully",
+          toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 5,
+          timeInSecForIosWeb: 3,
           backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0
@@ -63,12 +63,12 @@ class Api{
       isLogin=false;
       Fluttertoast.showToast(
           msg: "statuscode ${response.statusCode} , ${jsonDecode(response.body)}",
-          toastLength: Toast.LENGTH_LONG,
+          toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 5,
+          timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
-          fontSize: 16.0
+          fontSize: 16.0,
       );
       throw Exception('there is a problem in statuscode ${response.statusCode} and the error in body ${jsonDecode(response.body)}');
     }

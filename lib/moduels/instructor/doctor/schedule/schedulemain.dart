@@ -11,196 +11,251 @@ class _ScheduleMainState extends State<ScheduleMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff030629),
-      appBar: AppBar(backgroundColor: Color(0xff030629),),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GridView(
-            children: [
-              Container(
-                child: Card(
-                color: Color(0xffC5C5C5),
-                child: Column(
-                  children: [
-                    Text('Schedule  name',style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),),
-                    Text('Schedule  name',style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),),
-                    Text('Schedule  name',style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),),
-                  ],
+      backgroundColor: const Color(0xff030629),
+      appBar: AppBar(backgroundColor: const Color(0xff030629),),
+      body: GridView(
+        children: const [
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
                 ),
-            ),
               ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
               ),
             ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-              Card(
-              color: Color(0xffC5C5C5),
-              child: Column(
-                children: [
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                  Text('Schedule  name',style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black
-                  ),),
-                ],
-              ),
-            ),
-            ],
-              gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3/2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-              )
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              child: Center(
+                child: ListTile(
+                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                ),
+              ),
+              elevation: 8,
+              shadowColor: Colors.green,
+              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              ),
+            ),
+          ),
+
+
+        ],
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 50
+          )
       ),
     );
   }
 }
+
+
+//   Card(
+//
+//   color: Color(0xffC5C5C5),
+//   child: Column(
+//     children: [
+//       Text('Schedule  name',style: TextStyle(
+//           fontSize: 20,
+//           color: Colors.black
+//       ),),
+//       Text('Schedule  name',style: TextStyle(
+//           fontSize: 20,
+//           color: Colors.black
+//       ),),
+//       Text('Schedule  name',style: TextStyle(
+//           fontSize: 20,
+//           color: Colors.black
+//       ),),
+//     ],
+//   ),
+// ),
+

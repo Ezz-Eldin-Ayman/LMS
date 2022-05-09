@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lms/layouts/chooseuniversty.dart';
 import 'package:lms/moduels/instructor/doctor/maindoctor.dart';
 import 'package:lms/services/post_gettoken.dart';
@@ -292,6 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           type: TextInputType.emailAddress,
                           text_field: 'enter user name',
                           prefix_icon: Icons.email_outlined,
+
                         ),
                         default_textfield(
                           control_text: email,
@@ -393,36 +395,69 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         default_textfield(
                           control_text: pass,
-                          type: TextInputType.text,
+                          on_submit: (value) {
+                            return print(value);
+                          },
+                          type: TextInputType.emailAddress,
                           text_field: 'enter password',
-                          prefix_icon: Icons.perm_identity_rounded,
+                          prefix_icon: Icons.lock,
+                          suffix_icon: secure
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          iconbuttonfun: () {
+                            setState(() {
+                              secure = !secure;
+                            });
+                          },
+                          secure: secure,
                         ),
                         default_textfield(
                           control_text: passconfirm,
-                          type: TextInputType.text,
-                          text_field: 'enter confirme password',
-                          prefix_icon: Icons.perm_identity_rounded,
+                          on_submit: (value) {
+                            return print(value);
+                          },
+                          type: TextInputType.emailAddress,
+                          text_field: 'enter password',
+                          prefix_icon: Icons.lock,
+                          suffix_icon: secure
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          iconbuttonfun: () {
+                            setState(() {
+                              secure = !secure;
+                            });
+                          },
+                          secure: secure,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
                           child: default_button(
                             pressed: () {
-                              PostSignUp().postsignup(
-                                  username: username.text.toString(),
-                                  email: email.text.toString(),
-                                  first_name: first_name.text.toString(),
-                                  last_name: last_name.text.toString(),
-                                  department: department.text.toString(),
-                                  password: pass.text.toString(),
-                                  confirm_password: passconfirm.text.toString(),
-                                  companyname: widget.companyname.toString(),
-                                  usertype: widget.accounttype.toString(),
-                                  gender: gender.text.toString(),
-                                  age: age.text.toString(),
-                                  national_id: nationalid.text.toString(),
-                                  parent_national_id:
-                                      parent_national_id.text.toString(),
-                                  parent_email: parent_email.text.toString());
+                              if(username!="" || email != "" || first_name != "" || department != " " || pass != null ) {
+                                PostSignUp().postsignup(
+                                    username: username.text.toString(),
+                                    email: email.text.toString(),
+                                    first_name: first_name.text.toString(),
+                                    last_name: last_name.text.toString(),
+                                    department: department.text.toString(),
+                                    password: pass.text.toString(),
+                                    confirm_password: passconfirm.text
+                                        .toString(),
+                                    companyname: widget.companyname.toString(),
+                                    usertype: widget.accounttype.toString(),
+                                    gender: gender.text.toString(),
+                                    age: age.text.toString(),
+                                    national_id: nationalid.text.toString(),
+                                    parent_national_id:
+                                    parent_national_id.text.toString(),
+                                    parent_email: parent_email.text.toString());
+                              }
+                              else {
+                                Fluttertoast.showToast(
+                                  msg: "Please Fil All  Fields",
+                                  backgroundColor: Colors.red,
+                                );
+                              }
                             },
                             text: 'Submit',
                             backcolor: Color(0xff030629),
