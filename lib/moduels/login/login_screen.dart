@@ -1,54 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:lms/layouts/chooseuniversty.dart';
+import 'package:lms/moduels/instructor/doctor/maindoctor.dart';
 import 'package:lms/services/post_gettoken.dart';
 import 'package:lms/services/post_signup.dart';
 import 'package:lms/shared/components/components.dart';
-import 'package:lms/helper/api.dart' as ap;
-
-
 
 class LoginScreen extends StatefulWidget {
   String? accounttype;
   String? companyname;
   bool? isstudent;
   bool? isparent;
-  late final bool? isLogin;
   LoginScreen({
-       this.accounttype,
-       this.companyname,
-       this.isstudent,
-       this.isparent,
-       this.isLogin,
+    this.accounttype,
+    this.companyname,
+    this.isstudent,
+    this.isparent,
+    bool? isLogin
   });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-
-
 class _LoginScreenState extends State<LoginScreen> {
-  // variables
+  // variables.
+  bool? Ah;
   var emailcontroller = TextEditingController();
   var passcontroller = TextEditingController();
   bool login = true;
   String? user_type;
+  bool islogin = false;
   bool account_type = true;
+  bool secure = true;
   var username = TextEditingController();
   var email = TextEditingController();
   var first_name = TextEditingController();
+
   var last_name = TextEditingController();
+
   var department = TextEditingController();
+
   var gender = TextEditingController();
+
   var age = TextEditingController();
+
   var nationalid = TextEditingController();
+
   var parent_national_id = TextEditingController();
   var parent_email = TextEditingController();
+
   var pass = TextEditingController();
   var passconfirm = TextEditingController();
-  String dropdownvalue = 'Male';
-  var items = ['Male', 'Female'];
 
+  String dropdownvalue = 'Male';
+
+  var items = ['Male', 'Female'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,8 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: login
-                                    ? Colors.grey[500]
-                                    : Color(0xff262B58),
+                                    ? Color(0xff262B58)
+                                    : Colors.grey[400],
                               ),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -124,8 +131,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: login
-                                    ? Color(0xff262B58)
-                                    : Colors.grey[500],
+                                    ? Colors.grey[400]
+                                    : Color(0xff262B58) ,
                               ),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -198,8 +205,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             type: TextInputType.emailAddress,
                             text_field: 'enter password',
                             prefix_icon: Icons.lock,
-                            suffix_icon: Icons.remove_red_eye,
-                            secure: true,
+                            suffix_icon: secure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            iconbuttonfun: () {
+                              setState(() {
+                                secure = !secure;
+                              });
+                            },
+                            secure: secure,
                           ),
                           Center(
                             child: TextButton(
@@ -213,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   'Forget password',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.lightBlue,
+                                    color: Color(0xff030629),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 )),
@@ -227,38 +241,30 @@ class _LoginScreenState extends State<LoginScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 10),
                                 child: default_button(
-                                  pressed: () {
-                                      GetToken().get_token(
+                                  pressed: () async {
+                                    GetToken().get_token(
+                                        companyname: widget.companyname!,
+                                        accounttype: widget.accounttype!,
+                                        username:
+                                            emailcontroller.text.toString(),
+                                        password:
+                                            passcontroller.text.toString());
+                                    Map<String, dynamic> try109 =
+                                        await GetToken().getdatauser(
+                                            companyname: widget.companyname!,
+                                            accounttype: widget.accounttype!,
+                                            username:
+                                                emailcontroller.text.toString(),
+                                            password:
+                                                passcontroller.text.toString());
 
-                                          companyname: widget.companyname!,
-                                          accounttype: widget.accounttype!,
-                                          username:
-                                              emailcontroller.text.toString(),
-                                          password:
-                                              passcontroller.text.toString());
-                                        // GetToken().getdatauser(
-                                        //   companyname: widget.companyname!,
-                                        //   accounttype: widget.accounttype!,
-                                        //   username:
-                                        //   emailcontroller.text.toString(),
-                                        //   password:
-                                        //   passcontroller.text.toString(),
-                                        // );
-                                      // if(ap.isLogin!){
-                                      //   print("Login");
-                                      // }
-                                      // else{
-                                      //   print("No No");
-                                      //
-                                      // }
-                                    print(widget.accounttype);
-                                    print(widget.companyname);
-                                    print(widget.isLogin);
-                                   // print(ap.isLogin);
-
-
-
-                                      },
+                                    if (try109 != null) {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return MainDoctor();
+                                      }));
+                                    }
+                                  },
                                   text: 'login',
                                   backcolor: Color(0xff030629),
                                   fontsize: 20.0,
@@ -309,6 +315,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           control_text: department,
                           type: TextInputType.text,
                           text_field: 'enter department',
+                          prefix_icon:  Icons.account_balance
                         ),
                         Visibility(
                           visible: widget.isstudent!,
@@ -318,6 +325,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 control_text: age,
                                 type: TextInputType.number,
                                 text_field: 'enter age',
+                                prefix_icon: Icons.perm_identity
                               ),
                               default_textfield(
                                 control_text: nationalid,
@@ -374,11 +382,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                         dropdownvalue = newValue!;
                                       });
                                     },
+
                                   ),
                                 ),
                               ),
+
                             ],
                           ),
+
                         ),
                         default_textfield(
                           control_text: pass,

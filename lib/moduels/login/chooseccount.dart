@@ -82,7 +82,7 @@ class _ChooseAccountState extends State<ChooseAccount> {
                             Container_Button(
                               function: (){
                                 isstudent=false;
-                                Navigator.push(context, MaterialPageRoute(builder:(context){
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context){
                                   return ChooseInstructor(widget.companyname,isstudent);
                                 }));
                               },
@@ -95,7 +95,7 @@ class _ChooseAccountState extends State<ChooseAccount> {
                               function: (){
                                 isstudent=true;
                                 accounttype='student';
-                                Navigator.push(context, MaterialPageRoute(builder:(context){
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context){
                                   return LoginScreen(accounttype: accounttype!,companyname: widget.companyname,isstudent: isstudent,isparent:isparent);
                                 }));
                               },
@@ -107,7 +107,7 @@ class _ChooseAccountState extends State<ChooseAccount> {
                               function: (){
                                 accounttype='parent';
                                 isparent=true;
-                                Navigator.push(context, MaterialPageRoute(builder:(context){
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context){
                                   return LoginScreen(accounttype: accounttype!,companyname: widget.companyname,isstudent: isstudent,isparent: isparent,);
                                 }));
                               },

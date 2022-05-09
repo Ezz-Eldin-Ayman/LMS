@@ -24,7 +24,7 @@ class Api{
     else{
       throw Exception('there problem in status code ${response.statusCode}');
     }
-}
+  }
 
 
 
@@ -41,12 +41,13 @@ class Api{
     http.Response response = await http.post(
         url,
         body:body,
-      headers: {
+        headers: {
 
-      });
+        });
 
     if(response.statusCode==200){
       isLogin=true;
+      print("sssss");
       LoginScreen(isLogin: true,);
       Fluttertoast.showToast(
           msg: "Login Successfully",
@@ -90,8 +91,8 @@ class Api{
     http.Response response = await http.post(
         url,
         body:body,
-      headers: header
-       );
+        headers: header
+    );
     if(response.statusCode==200){
       Map<String,dynamic> data =jsonDecode(response.body);
       return data;

@@ -104,7 +104,7 @@ class _ChooseInstructorState extends State<ChooseInstructor> {
                                 accounttype = 'trainer';
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return LoginScreen(accounttype: accounttype,companyname:  widget.companyname, isstudent: widget.isstudent,isparent:widget.isparent);
+                                  return LoginScreen(accounttype: accounttype,companyname:  widget.companyname,isstudent: widget.isstudent,isparent:widget.isparent);
                                 }));
                               },
                               name: 'Trainer',

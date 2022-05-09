@@ -5,6 +5,7 @@ Widget default_textfield({
   required TextInputType type,
   bool secure=false,
   Function(String) ? on_submit,
+  Function() ? iconbuttonfun,
   required String text_field,
    IconData? prefix_icon,
   IconData? suffix_icon,
@@ -37,9 +38,7 @@ Widget default_textfield({
             prefixIcon: Icon(
               prefix_icon,
             ),
-            suffixIcon: Icon(
-              suffix_icon,
-            )
+            suffixIcon: IconButton(onPressed: iconbuttonfun, icon:Icon(suffix_icon))
         ),
       ),
     ),
