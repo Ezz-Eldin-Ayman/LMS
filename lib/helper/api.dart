@@ -47,7 +47,6 @@ class Api{
 
     if(response.statusCode==200){
       isLogin=true;
-      print("sssss");
       LoginScreen(isLogin: true,);
       Fluttertoast.showToast(
           msg: "Login Successfully",
