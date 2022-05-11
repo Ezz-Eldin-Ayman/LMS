@@ -327,16 +327,12 @@ class _MainAppState extends State<MainApp> {
     switch (index){
       case 0:
         return PageOne(accounttype: widget.accounttype,companyname: widget.companyname,);
-        break;
       case 1:
         return PageTwo();
-        break;
       case 2:
         return PageThree();
-        break;
       default:
         return PageOne();
-        break;
     }
   }
 
@@ -351,21 +347,24 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
 
-    return  Scaffold(
-          body: getPage(_currentIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home),label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.table_view_outlined),label: 'Schedule'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle),label: 'profile'),
-            ],
-            onTap: onTabTapped,
-            currentIndex: _currentIndex,
+    return  WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+            body: getPage(_currentIndex),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.home),label: 'Home'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.table_view_outlined),label: 'Schedule'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle),label: 'profile'),
+              ],
+              onTap: onTabTapped,
+              currentIndex: _currentIndex,
+            ),
           ),
-        );
+    );
   }
 }
