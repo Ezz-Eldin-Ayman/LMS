@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lms/layouts/chooseuniversty.dart';
 import 'package:lms/moduels/instructor/doctor/maindoctor.dart';
 import 'package:lms/services/post_gettoken.dart';
@@ -262,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     if (try109 != null) {
                                       Navigator.pushReplacement(context,
                                           MaterialPageRoute(builder: (context) {
-                                        return MainDoctor();
+                                        return MainApp(companyname: widget.companyname,accounttype: widget.accounttype,);
                                       }));
                                     }
                                   },
@@ -433,7 +432,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
                           child: default_button(
                             pressed: () {
-                              if(username!="" || email != "" || first_name != "" || department != " " || pass != null ) {
                                 PostSignUp().postsignup(
                                     username: username.text.toString(),
                                     email: email.text.toString(),
@@ -451,13 +449,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     parent_national_id:
                                     parent_national_id.text.toString(),
                                     parent_email: parent_email.text.toString());
-                              }
-                              else {
-                                Fluttertoast.showToast(
-                                  msg: "Please Fil All  Fields",
-                                  backgroundColor: Colors.red,
-                                );
-                              }
+
                             },
                             text: 'Submit',
                             backcolor: Color(0xff030629),

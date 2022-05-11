@@ -1,234 +1,64 @@
 import 'package:flutter/material.dart';
 
 class ScheduleMain extends StatefulWidget {
-  const ScheduleMain({Key? key}) : super(key: key);
+  String? accounttype;
+  String? companyname;
+  bool? isstudent;
+  bool? isparent;
+  ScheduleMain({
+    this.accounttype,
+    this.companyname,
+    this.isstudent,
+    this.isparent,
+    bool? isLogin
+  });
 
   @override
   State<ScheduleMain> createState() => _ScheduleMainState();
 }
 
 class _ScheduleMainState extends State<ScheduleMain> {
+  bool  c = false;
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: const Color(0xff030629),
       appBar: AppBar(backgroundColor: const Color(0xff030629),),
       body: GridView(
-        children: const [
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
+        children:  [
+          GestureDetector(
+            onTap: (){
+              setState(() {
+                c= !c;
+
+              });
+            },
+            child:  Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Card(
+                color: c?Colors.red:Colors.green,
+                child: Center(
+                  child: ListTile(
+                    title: Text("Schedule Name",textAlign: TextAlign.center, ),
+                  ),
                 ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+                elevation: 8,
+                shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Schedule Name",textAlign: TextAlign.center, ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-              ),
-            ),
-          ),
+          SizedBox(width: 10,height: 10,),
+          Text(widget.companyname.toString(),style: TextStyle(color: Colors.white),),
+          Text(widget.accounttype.toString(),style: TextStyle(color: Colors.white)),
+
+
 
 
         ],
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 50
           )
