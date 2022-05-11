@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 void main() => runApp(new MainApp());
 
 
-print(cb);
 class PageOne extends StatefulWidget {
   String? accounttype;
   String? companyname;
