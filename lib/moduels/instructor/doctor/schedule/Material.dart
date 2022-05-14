@@ -1,4 +1,3 @@
-import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/moduels/instructor/doctor/schedule/SlideView.dart';
 import 'package:lms/services/Doctor/Get_Material.dart';
@@ -189,15 +188,19 @@ class _viewVideoState extends State<viewVideo> {
         crossAxisCount: 2,
         children:
         List.generate(ldata.length, (index){
-          return BetterPlayer.network(
-            "https://lmsprov1.herokuapp.com/media/materials/videos/2022/05/14/20220212_184401.mp4",
-            betterPlayerConfiguration: BetterPlayerConfiguration(
-                aspectRatio: 1,
-                looping: true,
-                autoPlay: true,
-                fit: BoxFit.contain
+          return Center(
 
-            ),);
+          );
+
+            // BetterPlayer.network(
+            // "https://lmsprov1.herokuapp.com/media/materials/videos/2022/05/14/20220212_184401.mp4",
+            // betterPlayerConfiguration: BetterPlayerConfiguration(
+            //     aspectRatio: 1,
+            //     looping: true,
+            //     autoPlay: true,
+            //     fit: BoxFit.contain
+            //
+            // ),);
 
         }),
 
