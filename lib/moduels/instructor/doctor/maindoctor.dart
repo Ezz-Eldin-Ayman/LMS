@@ -87,15 +87,12 @@ class _PageTwoState extends State<PageTwo> {
   void initState()  {
     super.initState();
     Future (() async {
-      print(widget.userToken);
       List<dynamic> data = await AllSchedule().Get_All_Schedule(token:widget.userToken!);
      setState(() {
        ldata = data;
-       print("ldata");
        Map<int, dynamic> map = ldata.asMap();
        for(int i=0;i<ldata.length;i++){
          scheduleNames.add(map[i]["instructor_schedule_name"]);
-         print(scheduleNames);
        }
 
      });
@@ -120,7 +117,7 @@ class _PageTwoState extends State<PageTwo> {
                 onTap: (){
                   setState(() {
                     Navigator.push(context, MaterialPageRoute(builder:(context){
-                      return CourseInfo(username: widget.username,schedulesName:scheduleNames[index].toString() ,userToken: widget.userToken.toString(),);
+                      return CourseInfo(username: widget.username,schedulesName:scheduleNames[index].toString() ,userToken: widget.userToken,);
                     }));
                   });
 
@@ -251,27 +248,4 @@ class _MainAppState extends State<MainApp> {
 
 
 
-// Padding(
-//   padding: EdgeInsets.all(5.0),
-//   child: Card(
-//     child: Center(
-//       child: ListTile(
-//         title: Text("Schedule Name",textAlign: TextAlign.center, ),
-//       ),
-//     ),
-//     elevation: 8,
-//     shadowColor: Colors.green,
-//     shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
-//     ),
-//   ),
-// ),
-
-// MaterialButton(onPressed: ()async{
-//
-//     List<dynamic>  data =await AllSchedule().Get_All_Schedule(accounttype:widget.accounttype!,companyname:widget.companyname! ,password:widget.password! ,username:widget.username! );
-//     Navigator.push(context, MaterialPageRoute(builder:(context){
-//       return CourseInfo();
-//     }));
-//
-// },color: Colors.white,),
 

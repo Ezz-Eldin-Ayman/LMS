@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'Material.dart';
+
 class CourseInfo extends StatefulWidget {
   String? accounttype;
   String? companyname;
   String? username;
   String? schedulesName;
-  var userToken;
+  Map<String,dynamic>? userToken;
   CourseInfo({
     this.accounttype,
     this.companyname,
@@ -29,28 +31,28 @@ class _CourseInfoState extends State<CourseInfo> {
       ),
 
       drawer: Drawer(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.indigoAccent,
         child: ListView(
             padding: EdgeInsets.all(0.0),
             children: <Widget>[
-             const UserAccountsDrawerHeader(
-                accountName: Text('mokh',style:TextStyle(
-                  color: Colors.blue
+              UserAccountsDrawerHeader(
+                accountName: Text(widget.username.toString(),style:TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+
                 ),),
-                accountEmail: Text('mokh@gmail.com',style:TextStyle(
-                    color: Colors.blue
-                ),),
+                accountEmail: Text(""),
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.black,
                   maxRadius: 20.0,
                   backgroundImage: AssetImage('lib/shared/pecture/Doctor.png',),
                 ),
                 decoration: BoxDecoration(
-                    color: Color(0xffC5C5C5),
+                    color: Colors.indigo,
                 ),),
 
               ListTile(
-                title: Text('Student Schedule'),
+                title: Text('Student Schedule',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.person),
                 onLongPress: (){},
               ),
@@ -59,22 +61,35 @@ class _CourseInfoState extends State<CourseInfo> {
 
 
               ListTile(
-                title: Text('Materials'),
+                title: Text('View Materials',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.book),
                 onTap: (){
                   print(widget.userToken.runtimeType);
+                  print(widget.schedulesName);
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return material(userToken: widget.userToken,schedulesName: widget.schedulesName,);
+                  }));
                 },
               ),
 
               ListTile(
-                title: Text('tasks'),
+                title: Text('Upload Materials',style:TextStyle(fontSize: 20,)),
+                leading: Icon(Icons.upload_rounded),
+                onTap: (){
+                  print(widget.userToken.runtimeType);
+                  print(widget.schedulesName);
+                },
+              ),
+
+              ListTile(
+                title: Text('Tasks',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.assignment),
                 onLongPress: (){},
               ),
 
 
               ListTile(
-                title:const Text('quiz'),
+                title:const Text('Quizs',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.assignment),
                 onLongPress: (){},
               ),
@@ -82,7 +97,7 @@ class _CourseInfoState extends State<CourseInfo> {
               Divider(),
 
               ListTile(
-                  title: Text('Close '),
+                  title: Text('Close ',style:TextStyle(fontSize: 20,)),
                   leading: Icon(Icons.close),
                   onTap: (){
                     Navigator.of(context).pop();}
