@@ -41,7 +41,7 @@ class _CourseInfoState extends State<CourseInfo> {
                   color: Colors.white,
 
                 ),),
-                accountEmail: Text(""),
+                accountEmail: Text("Welcome ${widget.accounttype}",style: TextStyle(fontSize: 16)),
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.black,
                   maxRadius: 20.0,

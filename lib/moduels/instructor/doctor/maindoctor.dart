@@ -117,7 +117,7 @@ class _PageTwoState extends State<PageTwo> {
                 onTap: (){
                   setState(() {
                     Navigator.push(context, MaterialPageRoute(builder:(context){
-                      return CourseInfo(username: widget.username,schedulesName:scheduleNames[index].toString() ,userToken: widget.userToken,);
+                      return CourseInfo(username: widget.username,schedulesName:scheduleNames[index].toString() ,userToken: widget.userToken,accounttype: widget.accounttype,);
                     }));
                   });
 
