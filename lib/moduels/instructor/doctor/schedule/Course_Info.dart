@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:lms/moduels/instructor/doctor/schedule/Tasks.dart';
 import '../../../../services/Doctor/student_schedule_services.dart';
 import 'Material.dart';
-import 'StudentSchedule.dart';
 import 'UploadMaterialVide.dart';
 
 class CourseInfo extends StatefulWidget {
@@ -113,7 +112,11 @@ class _CourseInfoState extends State<CourseInfo> {
               ListTile(
                 title: Text('Tasks',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.assignment),
-                onLongPress: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return tasks(userToken: widget.userToken,Schedule_Name: widget.schedulesName,companyname: widget.companyname,);
+                  }));
+                },
               ),
 
 
@@ -134,93 +137,49 @@ class _CourseInfoState extends State<CourseInfo> {
             ]
         ),
       ),
-      body:Container(
-        child:ListView(
-          children:List.generate(ldata.length, (index){
-            return  Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+
+      body:ListView(
+        children:List.generate(ldata.length, (index){
+          return  Padding(
+            padding:  EdgeInsets.all(10.0),
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),color: Colors.white),
+              padding: EdgeInsets.all(10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      child: Image.asset('lib/shared/pecture/student.png',width:100 ),
+                      radius: 35,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          child: Image.asset('lib/shared/pecture/student.png',width:100 ),
-                          radius: 35,
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
+                      Text("Student Name :  ${student_name[index].toString()}",style: TextStyle(fontSize: 15),),
+                      SizedBox(height: 5,),
+                      Text("Student ID :  ${id[index].toString()}",style: TextStyle(fontSize: 15),),
+                      SizedBox(height: 5,),
+                      Text("Schedule :  ${student_schedule_name[index].toString()}",style: TextStyle(fontSize: 15),),
+                      SizedBox(height: 5,),
+                      Text("University  :  ${company_name[index].toString()}",style: TextStyle(fontSize: 15),),
 
-                            Row(
-                              children: [
-                                const Padding  (
-                                    padding:   EdgeInsets.all(8.0),
-                                    child:Text('Student name :',
-                                      style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-
-                                    ),maxLines: 1,textAlign: TextAlign.right,)
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:Text(student_name[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      wordSpacing: 1,
-                                     ),)
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('id :    ${id[index].toString()}   ',
-                                  style:TextStyle (
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 1,
-                                  ),
-                                  textAlign:TextAlign.center,
-                                  maxLines: 1,
-                                ),
-                                Text('can post : ${can_post[index].toString()}',
-                                  style:TextStyle (
-                                    fontSize: 15,
-                                    color: Colors.redAccent,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 1,
-                                  ),
-                                  textAlign:TextAlign.center,
-                                  maxLines: 1,
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: Text('student_schedule_name: ${student_schedule_name[index].toString()}'),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('Company Name: ${company_name[index].toString()}',style: TextStyle(color: Colors.black),),
-                            ),
-
-                          ],
-                        ),
-                      )
                     ],
                   ),
-                ),
-              ),
-            );
 
-          }),
-        )
+
+                ],
+              ),
+            ),
+          );
+
+        }),
       )
     );}}
+
+// ${company_name[index].toString()}
+// ${student_schedule_name[index].toString()}
+// ${student_name[index]}
+// ${id[index].toString()}
