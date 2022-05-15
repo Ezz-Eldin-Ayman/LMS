@@ -192,15 +192,6 @@ class _viewVideoState extends State<viewVideo> {
 
           );
 
-            // BetterPlayer.network(
-            // "https://lmsprov1.herokuapp.com/media/materials/videos/2022/05/14/20220212_184401.mp4",
-            // betterPlayerConfiguration: BetterPlayerConfiguration(
-            //     aspectRatio: 1,
-            //     looping: true,
-            //     autoPlay: true,
-            //     fit: BoxFit.contain
-            //
-            // ),);
 
         }),
 
