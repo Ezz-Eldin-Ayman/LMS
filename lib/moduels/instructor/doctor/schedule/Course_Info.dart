@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../services/Doctor/student_schedule_services.dart';
 import 'Material.dart';
+import 'StudentSchedule.dart';
+import 'UploadMaterialVide.dart';
 
 class CourseInfo extends StatefulWidget {
   String? accounttype;
@@ -22,6 +25,31 @@ class CourseInfo extends StatefulWidget {
 }
 
 class _CourseInfoState extends State<CourseInfo> {
+  List<dynamic> ldata = [] ;
+  List id=[];
+  List student_schedule_name=[];
+  List company_name=[];
+  List student_name=[];
+  List can_post=[];
+  void initState()  {
+    super.initState();
+    Future (() async {
+      List<dynamic> data = await StudentScheduleServices().Get_All_Student_Schedule(token:widget.userToken! , schedule_name: widget.schedulesName);
+      setState(() {
+        ldata = data;
+        Map<int, dynamic> map = ldata.asMap();
+        for(int i=0;i<ldata.length;i++){
+          id.add(map[i]["id"]);
+          student_schedule_name.add(map[i]["student_schedule_name"]);
+          company_name.add(map[i]["company_name"]);
+          student_name.add(map[i]["student_name"]);
+          can_post.add(map[i]["can_post"]);
+        }
+
+      });
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -54,7 +82,8 @@ class _CourseInfoState extends State<CourseInfo> {
               ListTile(
                 title: Text('Student Schedule',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.person),
-                onLongPress: (){},
+                  onTap: (){
+                    Navigator.of(context).pop();}
               ),
 
               Divider(),
@@ -71,13 +100,13 @@ class _CourseInfoState extends State<CourseInfo> {
                   }));
                 },
               ),
-
-              ListTile(
+               ListTile(
                 title: Text('Upload Materials',style:TextStyle(fontSize: 20,)),
                 leading: Icon(Icons.upload_rounded),
                 onTap: (){
-                  print(widget.userToken.runtimeType);
-                  print(widget.schedulesName);
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return MaterialUpload(userToken: widget.userToken,Schedule_Name: widget.schedulesName,);
+                  }));
                 },
               ),
 
@@ -105,6 +134,93 @@ class _CourseInfoState extends State<CourseInfo> {
             ]
         ),
       ),
-    );
-  }
-}
+      body:Container(
+        child:ListView(
+          children:List.generate(ldata.length, (index){
+            return  Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Expanded(
+                child: Container(
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          child: Image.asset('lib/shared/pecture/student.png',width:100 ),
+                          radius: 35,
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+
+                            Row(
+                              children: [
+                                const Padding  (
+                                    padding:   EdgeInsets.all(8.0),
+                                    child:Text('Student name :',
+                                      style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+
+                                    ),maxLines: 1,textAlign: TextAlign.right,)
+                                ),
+                                Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child:Text(student_name[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      wordSpacing: 1,
+                                     ),)
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('id :    ${id[index].toString()}   ',
+                                  style:TextStyle (
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    wordSpacing: 1,
+                                  ),
+                                  textAlign:TextAlign.center,
+                                  maxLines: 1,
+                                ),
+                                Text('can post : ${can_post[index].toString()}',
+                                  style:TextStyle (
+                                    fontSize: 15,
+                                    color: Colors.redAccent,
+                                    fontWeight: FontWeight.bold,
+                                    wordSpacing: 1,
+                                  ),
+                                  textAlign:TextAlign.center,
+                                  maxLines: 1,
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text('student_schedule_name: ${student_schedule_name[index].toString()}'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('Company Name: ${company_name[index].toString()}',style: TextStyle(color: Colors.black),),
+                            ),
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+
+          }),
+        )
+      )
+    );}}

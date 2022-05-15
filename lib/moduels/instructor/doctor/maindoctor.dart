@@ -88,14 +88,14 @@ class _PageTwoState extends State<PageTwo> {
     super.initState();
     Future (() async {
       List<dynamic> data = await AllSchedule().Get_All_Schedule(token:widget.userToken!);
-     setState(() {
-       ldata = data;
-       Map<int, dynamic> map = ldata.asMap();
-       for(int i=0;i<ldata.length;i++){
-         scheduleNames.add(map[i]["instructor_schedule_name"]);
-       }
+      setState(() {
+        ldata = data;
+        Map<int, dynamic> map = ldata.asMap();
+        for(int i=0;i<ldata.length;i++){
+          scheduleNames.add(map[i]["instructor_schedule_name"]);
+        }
 
-     });
+      });
 
     });
   }
@@ -111,8 +111,7 @@ class _PageTwoState extends State<PageTwo> {
         scrollDirection:Axis.vertical,
 
           crossAxisCount: 2,
-          children:
-          List.generate(ldata.length, (index){
+          children: List.generate(ldata.length, (index){
               return  GestureDetector(
                 onTap: (){
                   setState(() {
