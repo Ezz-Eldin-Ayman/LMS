@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../services/Doctor/student_schedule_services.dart';
 import 'Material.dart';
-import 'StudentSchedule.dart';
 import 'UploadMaterialVide.dart';
 
 class CourseInfo extends StatefulWidget {
@@ -159,21 +158,13 @@ class _CourseInfoState extends State<CourseInfo> {
 
                             Row(
                               children: [
-                                const Padding  (
+                                 Padding  (
                                     padding:   EdgeInsets.all(8.0),
-                                    child:Text('Student name :',
+                                    child:Text('Student name : ${student_name[index]} \n',
                                       style: TextStyle(
                                       fontWeight: FontWeight.bold,
 
                                     ),maxLines: 1,textAlign: TextAlign.right,)
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:Text(student_name[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      wordSpacing: 1,
-                                     ),)
                                 ),
                               ],
                             ),
@@ -184,16 +175,6 @@ class _CourseInfoState extends State<CourseInfo> {
                                 Text('id :    ${id[index].toString()}   ',
                                   style:TextStyle (
                                     fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 1,
-                                  ),
-                                  textAlign:TextAlign.center,
-                                  maxLines: 1,
-                                ),
-                                Text('can post : ${can_post[index].toString()}',
-                                  style:TextStyle (
-                                    fontSize: 15,
-                                    color: Colors.redAccent,
                                     fontWeight: FontWeight.bold,
                                     wordSpacing: 1,
                                   ),
@@ -224,3 +205,8 @@ class _CourseInfoState extends State<CourseInfo> {
         )
       )
     );}}
+
+// ${company_name[index].toString()}
+// ${student_schedule_name[index].toString()}
+// ${student_name[index]}
+// ${id[index].toString()}

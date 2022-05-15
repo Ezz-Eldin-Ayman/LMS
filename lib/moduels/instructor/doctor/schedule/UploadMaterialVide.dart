@@ -1,10 +1,6 @@
 import 'dart:io';
-
-import 'package:flutter/mat'
-    'erial.dart';
-
+import 'package:flutter/material.dart';
 import 'package:lms/shared/components/components.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:video_player/video_player.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -19,7 +15,7 @@ class MaterialUpload extends StatefulWidget {
     this.Schedule_Name,
     this.userToken
   });
-  SingingCharacter? _character = SingingCharacter.slide;
+  // SingingCharacter? _character = SingingCharacter.slide;
 
   @override
   State<MaterialUpload> createState() => _MaterialUploadState();
@@ -129,7 +125,7 @@ class _MaterialUploadState extends State<MaterialUpload> {
                     filecontroller = VideoPlayerController.file(file)
                       ..initialize().then((value) {
                         setState(() {
-                          print('ahmed hassan maghwry   ${filea!.runtimeType}');
+                          print('ahmed hassan maghwry   ${filea.runtimeType}');
                         });
                       });
                   }
@@ -205,12 +201,12 @@ class _MaterialUploadState extends State<MaterialUpload> {
                   width: 150.0,
                   child: default_button(
                     pressed: () async {
-                      print('ahmed hassan maghwry   ${filea!.runtimeType}');
+                      print('ahmed hassan maghwry   ${filea.runtimeType}');
                       UploadFile().Upload_Video(
                           token: widget.userToken!,
                           fileName: materialname.text.toString(),
                           Schedule_Name: widget.Schedule_Name!,
-                          uploadvideo: filea!);
+                          uploadvideo: filea);
                     },
                     text: 'send',
                     backcolor: Colors.blue,
