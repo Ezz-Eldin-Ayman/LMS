@@ -64,16 +64,19 @@ class _tasksState extends State<tasks> {
           child: Padding(
             padding: EdgeInsets.all(5.0),
             child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Task Name:- ${task_name[index].toString()}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20), ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  ListTile(title: Center(child:  Text(task_name[index].toString(),style: TextStyle(fontSize: 25,),))),
+                  Icon(Icons.picture_as_pdf,size: 70,color: Color(0xff030629),),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(date[index].toString(), style: TextStyle(fontSize: 15),overflow:TextOverflow.ellipsis ,),
+                  ),
+                ],
               ),
             ),
+
           ),
         );
 

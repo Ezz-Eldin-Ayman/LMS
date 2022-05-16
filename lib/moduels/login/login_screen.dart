@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lms/layouts/chooseuniversty.dart';
 import 'package:lms/moduels/instructor/doctor/maindoctor.dart';
 import 'package:lms/services/post_gettoken.dart';
 import 'package:lms/services/post_signup.dart';
 import 'package:lms/shared/components/components.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   String? accounttype;
@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const Padding(
                             padding: EdgeInsets.only(left: 40),
                             child: Text(
-                              'User Name :',
+                              'Username Or Email :',
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           default_textfield(
                             control_text: emailcontroller,
                             type: TextInputType.emailAddress,
-                            text_field: 'enter email',
+                            text_field: 'enter email or username',
                             prefix_icon: Icons.email_outlined,
                             on_submit: (data) {
                               user_type = data;
@@ -220,10 +220,28 @@ class _LoginScreenState extends State<LoginScreen> {
                           Center(
                             child: TextButton(
                                 onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return ChooseUniversty();
-                                  }));
+                                  Alert(
+                                      context: context,
+                                      title: "Enter Email To Reset Password",
+                                      content: Column(
+                                        children: <Widget>[
+                                          TextField(
+                                            decoration: InputDecoration(
+                                              icon: Icon(Icons.email),
+                                              labelText: 'Email',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      buttons: [
+                                        DialogButton(
+                                          onPressed: () => Navigator.pop(context),
+                                          child: Text(
+                                            "SEND",
+                                            style: TextStyle(color: Colors.white, fontSize: 20),
+                                          ),
+                                        )
+                                      ]).show();
                                 },
                                 child: const Text(
                                   'Forget password',

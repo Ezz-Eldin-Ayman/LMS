@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/moduels/instructor/doctor/schedule/SlideView.dart';
+import 'package:lms/moduels/instructor/doctor/schedule/viewVideo.dart';
 import 'package:lms/services/Doctor/Get_Material.dart';
 
 class material extends StatefulWidget {
@@ -117,14 +118,16 @@ class _viewSlideState extends State<viewSlide> {
           child: Padding(
             padding: EdgeInsets.all(5.0),
             child: Card(
-              child: Center(
-                child: ListTile(
-                  title: Text("Slide Name:- ${materialName[index].toString()}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20), ),
-                ),
-              ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              shape: CircleBorder(side: BorderSide(width: 5, color: Colors.indigo),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  ListTile(title: Center(child:  Text(materialName[index].toString(),style: TextStyle(fontSize: 25,),))),
+                  Icon(Icons.picture_as_pdf,size: 70,color: Color(0xff030629),),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(date[index].toString(), style: TextStyle(fontSize: 15),overflow:TextOverflow.ellipsis ,),
+                  ),
+                ],
               ),
             ),
           ),
@@ -164,6 +167,7 @@ class _viewVideoState extends State<viewVideo> {
   List<dynamic> ldata = [] ;
   List materialLink=[];
   List materialName=[];
+  List date=[];
   void initState()  {
     super.initState();
     Future (() async {
@@ -174,6 +178,8 @@ class _viewVideoState extends State<viewVideo> {
         for(int i=0;i<ldata.length;i++){
           materialName.add(map[i]["material_name"]);
           materialLink.add(map[i]["lecture_video"]);
+          date.add(map[i]["created_on"]);
+
         }
 
       });
@@ -182,21 +188,47 @@ class _viewVideoState extends State<viewVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      GridView.count(
-        scrollDirection:Axis.vertical,
-        crossAxisCount: 2,
-        children:
-        List.generate(ldata.length, (index){
-          return Center(
+    return GridView.count(
+      scrollDirection:Axis.vertical,
+      crossAxisCount: 2,
+      children:
+      List.generate(ldata.length, (index){
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder:(context){
+              return PlayVideo(link: materialLink[index],);
+            }));
 
-          );
+          },
+          child: Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  ListTile(title: Center(child:  Text(materialName[index].toString(),style: TextStyle(fontSize: 25,),))),
+                  Icon(Icons.video_library,size: 70,color: Color(0xff030629),),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(date[index].toString(), style: TextStyle(fontSize: 15),overflow:TextOverflow.ellipsis ,),
+                  ),
+                ],
+              ),
+            ),
+
+          ),
+        );
 
 
-        }),
+      }),
 
 
-      );
+    );
+
+
+
+
+
 
 
   }

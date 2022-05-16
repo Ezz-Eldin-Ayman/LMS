@@ -33,7 +33,7 @@ class _MaterialUploadState extends State<MaterialUpload> {
       });
   }
 
-  late File filea;
+   File? filea;
 
   // File filea = File(platformFile.path);
   bool ismute = false;
@@ -118,17 +118,15 @@ class _MaterialUploadState extends State<MaterialUpload> {
             ElevatedButton(
                 onPressed: () async {
                   final file = await PickFile();
-                  if (file == null)
-                    return;
-                  else {
-                    filea = File(file.path);
-                    filecontroller = VideoPlayerController.file(file)
+                    filea = File(file!.path);
+                    filecontroller = VideoPlayerController.file(filea!)
                       ..initialize().then((value) {
                         setState(() {
-                          print('ahmed hassan maghwry   ${filea.runtimeType}');
+                          print('ahmed hassan ppp   ${filea.runtimeType}');
+                          print('dddddddddd   ${filea}');
                         });
                       });
-                  }
+
                 },
                 child: Text('Upload Video', style: TextStyle(
                     color: Colors.white,
@@ -201,12 +199,12 @@ class _MaterialUploadState extends State<MaterialUpload> {
                   width: 150.0,
                   child: default_button(
                     pressed: () async {
-                      print('ahmed hassan maghwry   ${filea.runtimeType}');
+                      print('ahmed hassan send    ${filea.runtimeType}');
                       UploadFile().Upload_Video(
                           token: widget.userToken!,
                           fileName: materialname.text.toString(),
                           Schedule_Name: widget.Schedule_Name!,
-                          uploadvideo: filea);
+                          uploadVideo: filea!);
                     },
                     text: 'send',
                     backcolor: Colors.blue,
@@ -229,10 +227,12 @@ class _MaterialUploadState extends State<MaterialUpload> {
   Future<File?> PickFile() async {
     final result = await FilePicker.platform.pickFiles(type: FileType.video);
 
-    if (result == null)
-      return null;
-    else
+    if (result != null)
       return File(result.files.single.path.toString());
+
+    else
+    return null;
+
   }
 
 }
