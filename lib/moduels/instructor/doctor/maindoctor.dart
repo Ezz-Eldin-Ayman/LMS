@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/layouts/chooseuniversty.dart';
@@ -35,32 +36,161 @@ class _PageOneState extends State<PageOne> {
         backgroundColor: const Color(0xff030629),
         title: Text(" Home ",style: TextStyle(color: Colors.white),),
       ),
-      body:
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Your Company Is : " + widget.companyname.toString(),style: TextStyle(color: Colors.white),),
-            Text("And Your Are - " +
-                widget.accounttype.toString() +
-                " -  In This Company ",
-              style: TextStyle(color: Colors.white),),
-            MaterialButton(onPressed: (){
+      body:Stack(
+        children: <Widget>[
+          Column(
+            children: [
+              Flexible(
+                flex: 1,
+                child: Container(
+                    decoration: BoxDecoration(
+                        // image: DecorationImage(
+                        //     image: AssetImage("assets/imgs/h.jpg"), fit: BoxFit.fitHeight)
+                    ),
+                    child: Stack(
+                      children: <Widget>[
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: CircleAvatar(
+                                  backgroundImage: AssetImage(
+                                      "lib/shared/pecture/student.png"),
+                                  radius: 65.0),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 24.0),
+                              child: Text("${widget.username.toString()}",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 30)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text("${widget.accounttype}",
+                                  style: TextStyle(
+                                      color: Colors.white
+                                          .withOpacity(0.85),
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 80.0, left: 42, right: 32),
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceAround,
+                                crossAxisAlignment:
+                                CrossAxisAlignment.end,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: [
+                                      Text("University",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17.0,
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                      Text("${widget.companyname}",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                                  .withOpacity(0.8),
+                                              fontSize: 14.0))
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: [
+                                      Text("26",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17.0,
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                      Text("Comments",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                                  .withOpacity(0.8),
+                                              fontSize: 14.0))
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: [
+                                      Text("48",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17.0,
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                      Text("Bookmarks",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                                  .withOpacity(0.8),
+                                              fontSize: 14.0))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 0.0,bottom: 35),
+              child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                          shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ChooseUniversty()));
+                        },
+                        child: Padding(
+                            padding: EdgeInsets.only(
+                                left: 12.0, right: 12.0, top: 10, bottom: 10),
+                            child: Text("Signout",
+                                style: TextStyle(fontSize: 20.0))),
+                      ),
+                    ],
+                  ),
 
-
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) {
-                    return ChooseUniversty();
-                  }));
-            },
-            color: Colors.red,
-            child: Text("LogOut",style: TextStyle(color: Colors.white),),)
-          ],
-        ),
-      ),
-
-
+                ],
+              ),
+            ),
+          )
+        ],
+      )
     );
+
+
   }
 }
 
@@ -197,8 +327,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-
-
   Widget getPage(int index) {
     switch (index){
       case 0:
@@ -220,26 +348,31 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    final items = <Widget>[
+      Icon(Icons.home, size: 30),
+      Icon(Icons.schedule, size: 30),
+    ];
 
-    return  WillPopScope(
+    return new WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+      backgroundColor: Color(0xff030629),
         body: getPage(_currentIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.table_view_outlined),label: 'Schedule'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),label: 'profile'),
-          ],
-          onTap: onTabTapped,
-          currentIndex: _currentIndex,
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          height: 60,
+          index: _currentIndex,
+          items:items,
+          onTap: (index)=>setState(() {
+            this._currentIndex=index;
+          }),
         ),
+
+
       ),
     );
   }

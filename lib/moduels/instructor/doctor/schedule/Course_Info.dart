@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lms/moduels/instructor/doctor/schedule/Tasks.dart';
 import '../../../../services/Doctor/student_schedule_services.dart';
 import 'Material.dart';
-import 'UploadMaterialVide.dart';
 
 class CourseInfo extends StatefulWidget {
   String? accounttype;
@@ -99,15 +98,16 @@ class _CourseInfoState extends State<CourseInfo> {
                   }));
                 },
               ),
-               ListTile(
-                title: Text('Upload Materials',style:TextStyle(fontSize: 20,)),
-                leading: Icon(Icons.upload_rounded),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context){
-                    return MaterialUpload(userToken: widget.userToken,Schedule_Name: widget.schedulesName,);
-                  }));
-                },
-              ),
+               //Upload
+              //  ListTile(
+              //   title: Text('Upload Materials',style:TextStyle(fontSize: 20,)),
+              //   leading: Icon(Icons.upload_rounded),
+              //   onTap: (){
+              //     Navigator.push(context, MaterialPageRoute(builder:(context){
+              //       return MaterialUpload(userToken: widget.userToken,Schedule_Name: widget.schedulesName,);
+              //     }));
+              //   },
+              // ),
 
               ListTile(
                 title: Text('Tasks',style:TextStyle(fontSize: 20,)),
