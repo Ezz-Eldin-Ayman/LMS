@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.0.0
   curved_navigation_bar: ^1.0.3
   syncfusion_flutter_pdfviewer: ^20.1.55-beta
   fluttertoast: ^8.0.9
@@ -62,7 +63,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_native_splash:
+  color: "#030629"
+  image: lib/shared/pecture/lms.png
+  android: true
+  ios: true
 # The following section is specific to Flutter.
 flutter:
 
@@ -80,6 +85,7 @@ flutter:
     - lib/shared/pecture/v10.png
     - lib/shared/pecture/Doctor.png
     - lib/shared/pecture/student.png
+    - lib/shared/pecture/lms.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

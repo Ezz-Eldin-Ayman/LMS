@@ -26,7 +26,6 @@ class _StartState extends State<Start> {
       child: Container(
       margin: EdgeInsets.all(100.0),
       decoration: BoxDecoration(
-      color: Color(0xff44A5AE),
       shape: BoxShape.circle,
 
       ),
